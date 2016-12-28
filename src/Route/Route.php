@@ -77,6 +77,16 @@ class Route
     /**
      * @return string
      */
+    public function route()
+    {
+        return $this->route;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
     public function regExp($name)
     {
         return isset($this->regExp[$name]) ? $this->regExp[$name] : $this->defaultRegExp;
