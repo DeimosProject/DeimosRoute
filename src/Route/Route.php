@@ -45,7 +45,7 @@ class Route
     {
         $this->path = current($path);
 
-        if (!$this->path || $this->path{0} !== '/')
+        if (empty($this->path))
         {
             throw new PathNotFound('Path not found');
         }

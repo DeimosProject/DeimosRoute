@@ -85,7 +85,7 @@ class RouteTest extends \PHPUnit_Framework_TestCase
      */
     public function testParseException()
     {
-        new Route(['123']);
+        new Route(['']);
     }
 
 }
