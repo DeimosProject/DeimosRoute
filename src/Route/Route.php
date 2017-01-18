@@ -2,23 +2,25 @@
 
 namespace Deimos\Route;
 
+use Deimos\Route\Exceptions\PathNotFound;
+
 class Route
 {
 
     /**
      * @var string
      */
-    protected $route;
+    protected $path;
 
     /**
      * @var array
      */
-    protected $attributes = [];
+    protected $defaults = [];
 
     /**
      * @var array
      */
-    protected $methodAllow = [];
+    protected $allowMethods = [];
 
     /**
      * @var array
@@ -33,45 +35,24 @@ class Route
     /**
      * Route constructor.
      *
-     * @param array $route
+     * @param array $path
+     * @param array $defaults
+     * @param array $allowMethods
      *
-     * @throws \InvalidArgumentException
+     * @throws PathNotFound
      */
-    public function __construct(array $route)
+    public function __construct(array $path, array $defaults = [], array $allowMethods = [])
     {
-        if (empty($route[0]))
+        $this->path = current($path);
+
+        if (!$this->path || $this->path{0} !== '/')
         {
-            throw new \InvalidArgumentException('Route not found');
+            throw new PathNotFound('Path not found');
         }
 
-        $this->parseRoute(current($route));
-        $this->attributes  = next($route) ?: [];
-        $this->methodAllow = next($route) ?: [];
-    }
-
-    /**
-     * @param $data
-     *
-     * @throws \InvalidArgumentException
-     */
-    protected function parseRoute($data)
-    {
-        if (is_string($data))
-        {
-            $this->route = $data;
-
-            return;
-        }
-
-        if (is_array($data))
-        {
-            $this->route  = current($data);
-            $this->regExp = next($data) ?: [];
-
-            return;
-        }
-
-        throw new \InvalidArgumentException('Parse route error: ' . json_encode($data));
+        $this->regExp       = next($path) ?: [];
+        $this->defaults     = $defaults;
+        $this->allowMethods = $allowMethods;
     }
 
     /**
@@ -79,7 +60,7 @@ class Route
      */
     public function route()
     {
-        return $this->route;
+        return $this->path;
     }
 
     /**
@@ -89,7 +70,9 @@ class Route
      */
     public function regExp($name)
     {
-        return isset($this->regExp[$name]) ? $this->regExp[$name] : $this->defaultRegExp;
+        return isset($this->regExp[$name]) ?
+            $this->regExp[$name] :
+            $this->defaultRegExp;
     }
 
     /**
@@ -97,7 +80,7 @@ class Route
      */
     public function attributes()
     {
-        return $this->attributes;
+        return $this->defaults;
     }
 
     /**
@@ -107,12 +90,12 @@ class Route
      */
     public function methodIsAllow($needle)
     {
-        if (empty($this->methodAllow))
+        if (empty($this->allowMethods))
         {
             return true;
         }
 
-        return in_array($needle, $this->methodAllow, true);
+        return in_array($needle, $this->allowMethods, true);
     }
 
 }

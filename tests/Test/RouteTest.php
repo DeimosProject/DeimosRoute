@@ -2,24 +2,26 @@
 
 namespace Test;
 
+use Deimos\Route\Route;
+
 class RouteTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testRoute()
     {
 
-        $route = new \Deimos\Route\Route(['/hello']);
+        $route = new Route(['/hello']);
 
         $this->assertEquals(
             '/hello',
             $route->route()
         );
 
-        $route = new \Deimos\Route\Route([
-            '/hello', [
-                'controller' => 'first',
-                'prefix'     => 'admin',
-            ]
+        $route = new Route([
+            '/hello'
+        ], [
+            'controller' => 'first',
+            'prefix'     => 'admin',
         ]);
 
         $this->assertEquals(
@@ -36,12 +38,13 @@ class RouteTest extends \PHPUnit_Framework_TestCase
             $route->regExp('id')
         );
 
-        $route = new \Deimos\Route\Route([
-            ['/hello-array', [ 'id' => '\d+' ]], [
-                'controller' => 'first',
-                'prefix'     => 'admin',
-            ], ['POST', 'GET']
-        ]);
+        $route = new Route([
+            '/hello-array',
+            [ 'id' => '\d+' ]
+        ],[
+            'controller' => 'first',
+            'prefix'     => 'admin',
+        ], ['POST', 'GET']);
 
         $this->assertEquals(
             '/hello-array',
@@ -70,19 +73,19 @@ class RouteTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \Deimos\Route\Exceptions\PathNotFound
      */
     public function testEmptyException()
     {
-        new \Deimos\Route\Route([]);
+        new Route([]);
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException \Deimos\Route\Exceptions\PathNotFound
      */
     public function testParseException()
     {
-        new \Deimos\Route\Route([123]);
+        new Route(['123']);
     }
 
 }

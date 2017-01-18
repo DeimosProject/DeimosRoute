@@ -7,19 +7,19 @@ $route = new \Deimos\Route\Route(['/hello']);
 var_dump($route);
 
 $route = new \Deimos\Route\Route([
-    '/hello', [
-        'controller' => 'first',
-        'prefix'     => 'admin',
-    ]
+    '/hello'
+], [
+    'controller' => 'first',
+    'prefix'     => 'admin',
 ]);
 
 var_dump($route);
 
 $route = new \Deimos\Route\Route([
-    '/hello', [
-        'controller' => 'first',
-        'prefix'     => 'admin',
-    ], ['POST', 'GET']
-]);
+    '/hello'
+], [
+    'controller' => 'first',
+    'prefix'     => 'admin',
+], ['POST', 'GET']);
 
 var_dump($route);
