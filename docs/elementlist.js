@@ -1,3 +1,3 @@
 
 var ApiGen = ApiGen || {};
-ApiGen.elements = [["c","Deimos\\Route\\Route"],["c","Exception"],["c","InvalidArgumentException"],["c","LogicException"],["c","Throwable"]];
+ApiGen.elements = [["c","Deimos\\Route\\Exceptions\\PathNotFound"],["c","Deimos\\Route\\Route"],["c","Exception"],["c","Throwable"]];

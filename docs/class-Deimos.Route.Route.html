@@ -26,10 +26,16 @@
 						<ul>
 				<li class="active">
 					<a href="namespace-Deimos.Route.html">
-						Route					</a>
+						Route<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-Deimos.Route.Exceptions.html">
+						Exceptions					</a>
 
 						</li>
-							</ul></li>
+							</ul></li></ul></li>
 				<li>
 					<a href="namespace-PHP.html">
 						PHP					</a>
@@ -114,7 +120,7 @@
 		<b>Namespace:</b> <a href="namespace-Deimos.html">Deimos</a>\<a href="namespace-Deimos.Route.html">Route</a><br>
 		
 
-			<b>Located at</b> <a href="source-class-Deimos.Route.Route.html#5-118" title="Go to source code">Route/Route.php</a>
+			<b>Located at</b> <a href="source-class-Deimos.Route.Route.html#7-101" title="Go to source code">Route/Route.php</a>
 		<br>
 	</div>
 
@@ -134,7 +140,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Deimos.Route.Route.html#33-50" title="Go to source code">__construct</a>( <span>array <var>$route</var></span> )</code>
+		<code><a href="source-class-Deimos.Route.Route.html#35-56" title="Go to source code">__construct</a>( <span>array <var>$path</var></span>, <span>array <var>$defaults</var> = []</span>, <span>array <var>$allowMethods</var> = []</span> )</code>
 
 		<div class="description short">
 			<p>Route constructor.</p>
@@ -146,53 +152,18 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$route</var></dt>
+					<dt><var>$path</var></dt>
+					<dd></dd>
+					<dt><var>$defaults</var></dt>
+					<dd></dd>
+					<dt><var>$allowMethods</var></dt>
 					<dd></dd>
 				</dl></div>
 
 
 				<h4>Throws</h4>
 				<div class="list">
-					<code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code>
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="parseRoute" id="_parseRoute">
-
-		<td class="attributes"><code>
-			 protected 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_parseRoute">#</a>
-		<code><a href="source-class-Deimos.Route.Route.html#52-75" title="Go to source code">parseRoute</a>( <span> <var>$data</var></span> )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$data</var></dt>
-					<dd></dd>
-				</dl></div>
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><a href="class-InvalidArgumentException.html">InvalidArgumentException</a></code>
+					<code><a href="class-Deimos.Route.Exceptions.PathNotFound.html">Deimos\Route\Exceptions\PathNotFound</a></code>
 				</div>
 
 
@@ -212,7 +183,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_route">#</a>
-		<code><a href="source-class-Deimos.Route.Route.html#77-83" title="Go to source code">route</a>( )</code>
+		<code><a href="source-class-Deimos.Route.Route.html#58-64" title="Go to source code">route</a>( )</code>
 
 		<div class="description short">
 			
@@ -246,7 +217,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_regExp">#</a>
-		<code><a href="source-class-Deimos.Route.Route.html#85-93" title="Go to source code">regExp</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-Deimos.Route.Route.html#66-76" title="Go to source code">regExp</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			
@@ -285,7 +256,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_attributes">#</a>
-		<code><a href="source-class-Deimos.Route.Route.html#95-101" title="Go to source code">attributes</a>( )</code>
+		<code><a href="source-class-Deimos.Route.Route.html#78-84" title="Go to source code">attributes</a>( )</code>
 
 		<div class="description short">
 			
@@ -319,7 +290,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_methodIsAllow">#</a>
-		<code><a href="source-class-Deimos.Route.Route.html#103-116" title="Go to source code">methodIsAllow</a>( <span> <var>$needle</var></span> )</code>
+		<code><a href="source-class-Deimos.Route.Route.html#86-99" title="Go to source code">methodIsAllow</a>( <span> <var>$needle</var></span> )</code>
 
 		<div class="description short">
 			
@@ -361,14 +332,14 @@
 
 	<table class="summary properties" id="properties">
 	<caption>Properties summary</caption>
-	<tr data-order="route" id="$route">
+	<tr data-order="path" id="$path">
 		<td class="attributes"><code>
 			protected  
 			string
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Deimos.Route.Route.html#8-11" title="Go to source code"><var>$route</var></a>
+				<a href="source-class-Deimos.Route.Route.html#10-13" title="Go to source code"><var>$path</var></a>
 
 			<div class="description short">
 				
@@ -381,19 +352,19 @@
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$route" class="anchor">#</a>
+				<a href="#$path" class="anchor">#</a>
 				<code></code>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="attributes" id="$attributes">
+	<tr data-order="defaults" id="$defaults">
 		<td class="attributes"><code>
 			protected  
 			array
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Deimos.Route.Route.html#13-16" title="Go to source code"><var>$attributes</var></a>
+				<a href="source-class-Deimos.Route.Route.html#15-18" title="Go to source code"><var>$defaults</var></a>
 
 			<div class="description short">
 				
@@ -406,19 +377,19 @@
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$attributes" class="anchor">#</a>
+				<a href="#$defaults" class="anchor">#</a>
 				<code>[]</code>
 			</div>
 		</td>
 	</tr>
-	<tr data-order="methodAllow" id="$methodAllow">
+	<tr data-order="allowMethods" id="$allowMethods">
 		<td class="attributes"><code>
 			protected  
 			array
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Deimos.Route.Route.html#18-21" title="Go to source code"><var>$methodAllow</var></a>
+				<a href="source-class-Deimos.Route.Route.html#20-23" title="Go to source code"><var>$allowMethods</var></a>
 
 			<div class="description short">
 				
@@ -431,7 +402,7 @@
 		</td>
 		<td class="value">
 			<div>
-				<a href="#$methodAllow" class="anchor">#</a>
+				<a href="#$allowMethods" class="anchor">#</a>
 				<code>[]</code>
 			</div>
 		</td>
@@ -443,7 +414,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Deimos.Route.Route.html#23-26" title="Go to source code"><var>$regExp</var></a>
+				<a href="source-class-Deimos.Route.Route.html#25-28" title="Go to source code"><var>$regExp</var></a>
 
 			<div class="description short">
 				
@@ -468,7 +439,7 @@
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Deimos.Route.Route.html#28-31" title="Go to source code"><var>$defaultRegExp</var></a>
+				<a href="source-class-Deimos.Route.Route.html#30-33" title="Go to source code"><var>$defaultRegExp</var></a>
 
 			<div class="description short">
 				
