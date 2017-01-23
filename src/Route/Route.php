@@ -53,6 +53,28 @@ class Route
         $this->regExp       = next($path) ?: [];
         $this->defaults     = $defaults;
         $this->allowMethods = $allowMethods;
+
+        $this->init();
+    }
+
+    /**
+     * init route
+     */
+    protected function init()
+    {
+        $this->path = preg_replace_callback(
+            '~\<(?<key>\w+)(\:(?<value>.+?))?\>~',
+            function ($matches)
+            {
+                if (!empty($matches['value']))
+                {
+                    $this->regExp[$matches['key']] = $matches['value'];
+                }
+
+                return '<' . $matches['key'] . '>';
+            },
+            $this->path
+        );
     }
 
     /**
