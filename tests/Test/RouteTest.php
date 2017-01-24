@@ -29,6 +29,35 @@ class RouteTest extends \PHPUnit_Framework_TestCase
             $route->route()
         );
 
+        $route = new Route([
+            '/<hello:\w+>/<controller>', [
+                'controller' => '\w+'
+            ]
+        ], [
+            'controller' => 'first',
+            'prefix'     => 'admin',
+        ]);
+
+        $this->assertEquals(
+            '\w+',
+            $route->regExp('hello')
+        );
+
+        $this->assertEquals(
+            '\w+',
+            $route->regExp('controller')
+        );
+
+        $this->assertEquals(
+            '[\w-А-ЯЁа-яё]+',
+            $route->regExp('adfjkjl')
+        );
+
+        $this->assertEquals(
+            '/<hello>/<controller>',
+            $route->route()
+        );
+
         $this->assertTrue($route->methodIsAllow('GET'));
         $this->assertTrue($route->methodIsAllow('POST'));
         $this->assertTrue($route->methodIsAllow('PUT'));
